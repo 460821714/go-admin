@@ -57,7 +57,6 @@ func (c *UserInfoController) Save() {
 //返回全部数据
 func (c *UserInfoController) List() {
 
-	//获得第几页的分页数据。
 	dataList, err := models.QueryAllUserInfo()
 	if err == nil {
 		c.Data["List"] = dataList

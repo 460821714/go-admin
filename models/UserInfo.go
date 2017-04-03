@@ -12,12 +12,12 @@ type UserInfo struct {
 	Password   string `orm:"size(255)"`    //密码
 	Name       string `orm:"size(255)"`    //用户名
 	BirthDate  string `orm:"size(255)"`    //生日
-	Gender     int64 `orm:"size(255)"`     //姓名
+	Gender     int8       //性别
 	Email      string `orm:"size(255)"`    //Email
 	Phone      string `orm:"size(255)"`    //电话
-	Status     int64 `orm:"size(255)"`     //状态
-	CreateTime time.Time `orm:"size(255)"` //创建时间
-	UpdateTime time.Time `orm:"size(255)"` //更新时间
+	Status     int8     //状态
+	CreateTime time.Time //创建时间
+	UpdateTime time.Time  //更新时间
 }
 
 func init() {
@@ -49,7 +49,7 @@ func SaveUserInfoById(m *UserInfo) (err error) {
 			tmp.Phone = m.Phone
 			tmp.Status = m.Status
 			tmp.UpdateTime = time.Now()
-			
+
 			if num, err = o.Update(tmp); err == nil {
 				logs.Info("Number of records updated in database:", num)
 			}
